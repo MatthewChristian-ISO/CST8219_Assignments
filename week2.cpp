@@ -38,13 +38,16 @@ class MyFirstClass {
 	}
 	*/
 
-	// Parameterized Constructor.
-	 MyFirstClass(int a, char* f, char* l) : firstName(f), lastName(l) {
-		 age = a;
+	/*
+	  Parameterized Constructor.
+	MyFirstClass(int a, char* f, char* l) : firstName(f), lastName(l) {
+		age = a;
 	 }
-
-	// Default Constructor using Constructor Chaining.
+	*/
+	/*
+	  Default Constructor using Constructor Chaining.
 	MyFirstClass() : MyFirstClass(0, NULL, NULL) {}
+	*/
 
 	/*
 	  This is a Destructor.
@@ -52,8 +55,8 @@ class MyFirstClass {
 	  There can only be one destructor.
 	  The compiler calls the destructor for you.
 	  Never call a destructor directly.
-	*/
 	~MyFirstClass() {}
+	*/
 
 	/*
 	  This is NOT a Constructor, NOR does it call a
@@ -64,41 +67,50 @@ class MyFirstClass {
 	MyFirstClass mfc();
 	*/
 
-	// Returns the variable age.
+	/*
+	  Returns the variable age.
 	int getAge() {
 		return age;
 	}
+	*/
 
-	// Returns the variable firstName.
+	/*
+	  Returns the variable firstName.
 	char* getFirstName() {
 		return firstName;
 	}
+	*/
 
-	// Returns the variable lastName.
+	/*
+	  Returns the variable lastName.
 	char* getLastName() {
 		return lastName;
 	}
+	*/
 
 // This is also an access specifier.
  protected:
-	// Sets the value of the variable age.
+	/*
+	  Sets the value of the variable age.
 	void setAge(int a) {
 		age = a;
 	}
+	*/
 
-	// Sets the value of the variable firstName.
+	/*
+	  Sets the value of the variable firstName.
 	void setFirstName(char* f) {
 		firstName = f;
 	}
+	*/
 
-	// Sets the value of the variable lastName.
+	/*
+	  Sets the value of the variable lastName.
 	void setLastName(char* l) {
 		lastName = l;
 	}
+	*/
 };
-
-// Separate Class.
-class MySecondClass {};
 
 // Class to represent a car.
 class Vehicle {
@@ -110,26 +122,49 @@ class Vehicle {
 	Vehicle(int w, int d) {
 		numWheels = w;
 		numDoors = d;
+
+		cout << "In constructor with 2 parameters" << endl;
 	}
 
-	Vehicle(int w) : Vehicle(w, 4) {}
+	Vehicle(int w) : Vehicle(w, 4) {
+		cout << "In constructor with 1 parameters, wheels ="
+			<< w << endl;
+	}
 
-	Vehicle() : Vehicle(4) {}
+	Vehicle() : Vehicle(4) {
+		cout << "In constructor with 0 parameters" << endl;
+	}
+
+	~Vehicle() {
+		cout << "In destructor" << endl;
+	}
 };
 
 int main(int argc, char** argv) {
-	// Calls an empty Constructor.
+	/*
+	  Calls an empty Constructor.
 	MyFirstClass mfc;
+	*/
 
-	// Also calls an empty Constructor.
+	/*
+	  Also calls an empty Constructor.
 	MyFirstClass mfc = MyFirstClass();
+	*/
 
-	// Calls a Constructor with parameters.
+	/*
+	  Calls a Constructor with parameters.
 	MyFirstClass mfc(15, "Joshua", "Dane");
+	*/
 
-	// Also calls a Constructor with parameters.
+	/*
+	  Also calls a Constructor with parameters.
 	MyFirstClass mfc = MyFirstClass(5, "Ally", "Johnson");
-	cout << "Hello World!" << endl;
-	return 0;
+	*/
 
+	/*
+	  Outputs a message to the screen.
+	cout << "Hello World!" << endl;
+	*/
+
+	return 0;
 }
