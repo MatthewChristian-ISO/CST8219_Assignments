@@ -13,18 +13,24 @@ using namespace std;
 */
 namespace CST8219 {
 	class MyFirstClass {};
+	class MySecondClass {};
+	class Vehicle {};
 }
 
-// Inital Class.
+// Initial Class.
 class MyFirstClass {
-private:
+
+// This is an access specifier, any variable or 
+// function following it now have this level of access.
+ private:
 	int age;
 	char* firstName;
 	char* lastName;
 
-public:
+// This is also an access specifier.
+ public:
 	/*
-	  Default Constructor.
+	  Default Constructor without Constructor Chaining.
 	MyFirstClass() {
 		age = 0;
 		firstName = NULL;
@@ -32,12 +38,13 @@ public:
 	}
 	*/
 
+	// Parameterized Constructor.
+	 MyFirstClass(int a, char* f, char* l) : firstName(f), lastName(l) {
+		 age = a;
+	 }
+
 	// Default Constructor using Constructor Chaining.
 	MyFirstClass() : MyFirstClass(0, NULL, NULL) {}
-
-	MyFirstClass(int a, char* f, char* l) : firstName(f), lastName(l) {
-		age = a;
-	}
 
 	/*
 	  This is a Destructor.
@@ -46,8 +53,7 @@ public:
 	  The compiler calls the destructor for you.
 	  Never call a destructor directly.
 	*/
-	~MyFirstClass() {
-	}
+	~MyFirstClass() {}
 
 	/*
 	  This is NOT a Constructor, NOR does it call a
@@ -57,23 +63,35 @@ public:
 	  of MyFirstClass{}.
 	MyFirstClass mfc();
 	*/
+
+	// Returns the variable age.
 	int getAge() {
 		return age;
 	}
 
+	// Returns the variable firstName.
 	char* getFirstName() {
 		return firstName;
 	}
 
+	// Returns the variable lastName.
 	char* getLastName() {
 		return lastName;
 	}
 
-protected:
+// This is also an access specifier.
+ protected:
+	// Sets the value of the variable age.
+	void setAge(int a) {
+		age = a;
+	}
+
+	// Sets the value of the variable firstName.
 	void setFirstName(char* f) {
 		firstName = f;
 	}
 
+	// Sets the value of the variable lastName.
 	void setLastName(char* l) {
 		lastName = l;
 	}
@@ -81,6 +99,23 @@ protected:
 
 // Separate Class.
 class MySecondClass {};
+
+// Class to represent a car.
+class Vehicle {
+ private:
+	int numWheels;
+	int numDoors;
+
+ public: 
+	Vehicle(int w, int d) {
+		numWheels = w;
+		numDoors = d;
+	}
+
+	Vehicle(int w) : Vehicle(w, 4) {}
+
+	Vehicle() : Vehicle(4) {}
+};
 
 int main(int argc, char** argv) {
 	// Calls an empty Constructor.
