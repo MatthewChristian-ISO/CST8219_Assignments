@@ -1,34 +1,24 @@
-
-#include<iostream>
-
-using namespace std;
+/*
+  Initial Class.
+class MyFirstClass {
+*/
 
 /*
-  Namespaces allow you to wrap your Class names so that
-  they won't conflict with other Class names.
-  It is good practice to create a namespace so that
-  your Class names are unique.
-  Namespaces are similar to packages in Java
-  The following statement creates a namespace.
-*/
-namespace CST8219 {
-	class MyFirstClass {};
-	class MySecondClass {};
-	class Vehicle {};
-}
-
-// Initial Class.
-class MyFirstClass {
-
-// This is an access specifier, any variable or 
-// function following it now have this level of access.
+  This is an access specifier, any variable or
+  function following it now have this level of access.
  private:
+*/	
+	/*
+	  These are Class variables/members.
 	int age;
 	char* firstName;
 	char* lastName;
+	*/
 
-// This is also an access specifier.
+/*
+  This is also an access specifier.
  public:
+ */
 	/*
 	  Default Constructor without Constructor Chaining.
 	MyFirstClass() {
@@ -44,6 +34,7 @@ class MyFirstClass {
 		age = a;
 	 }
 	*/
+
 	/*
 	  Default Constructor using Constructor Chaining.
 	MyFirstClass() : MyFirstClass(0, NULL, NULL) {}
@@ -88,8 +79,10 @@ class MyFirstClass {
 	}
 	*/
 
-// This is also an access specifier.
+/*
+  This is also an access specifier.
  protected:
+*/
 	/*
 	  Sets the value of the variable age.
 	void setAge(int a) {
@@ -109,37 +102,52 @@ class MyFirstClass {
 	void setLastName(char* l) {
 		lastName = l;
 	}
+};
 	*/
-};
 
-// Class to represent a car.
-class Vehicle {
- private:
-	int numWheels;
-	int numDoors;
 
- public: 
-	Vehicle(int w, int d) {
-		numWheels = w;
-		numDoors = d;
+#include<iostream>
+using namespace std;
 
-		cout << "In constructor with 2 parameters" << endl;
-	}
+/*
+  Namespaces allow you to wrap your Class names so that
+  they won't conflict with other Class names.
+  It is good practice to create a namespace so that
+  your Class names are unique.
+  Namespaces are similar to packages in Java
+  The following statement creates a namespace.
+*/
+namespace CST8219 {
+	// Class to represent a vehicle.
+	class Vehicle {
+	 private:
+		int numWheels;
+		int numDoors;
 
-	Vehicle(int w) : Vehicle(w, 4) {
-		cout << "In constructor with 1 parameters, wheels ="
-			<< w << endl;
-	}
+	 public: 
+		Vehicle(int w, int d) {
+			numWheels = w;
+			numDoors = d;
 
-	Vehicle() : Vehicle(4) {
-		cout << "In constructor with 0 parameters" << endl;
-	}
+			cout << "In constructor with 2 parameters" << endl;
+		}
 
-	~Vehicle() {
-		cout << "In destructor" << endl;
-	}
-};
+		Vehicle(int w) : Vehicle(w, 4) {
+			cout << "In constructor with 1 parameters, wheels = "
+				<< w << endl;
+		}
 
+		Vehicle() : Vehicle(4) {
+			cout << "In constructor with 0 parameters" << endl;
+		}
+
+		~Vehicle() {
+			cout << "In destructor" << endl;
+		}
+	};
+}
+
+using namespace CST8219;
 int main(int argc, char** argv) {
 	/*
 	  Calls an empty Constructor.
@@ -166,5 +174,10 @@ int main(int argc, char** argv) {
 	cout << "Hello World!" << endl;
 	*/
 
+	// Calls the Constructor Vehicle().
+	CST8219::Vehicle myVehicle;
+
+	// Outputs a message to the screen.
+	cout << "I made a Vehicle!" << endl;
 	return 0;
 }
