@@ -181,8 +181,13 @@ int main(int argc, char** argv) {
 
 	/*
 	  Calls the Constructor Vehicle(int).
-	*/
 	CST8219::Vehicle myVehicle(4);
+	*/
+	
+	/*
+	  Calls the Constructor Vehicle(int, int).
+	*/
+	CST8219::Vehicle myVehicle(4, 2);
 
 	// Outputs a message to the screen.
 	cout << "I made a Vehicle!" << endl;
