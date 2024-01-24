@@ -174,8 +174,15 @@ int main(int argc, char** argv) {
 	cout << "Hello World!" << endl;
 	*/
 
-	// Calls the Constructor Vehicle().
+	/*
+	  Calls the Constructor Vehicle().
 	CST8219::Vehicle myVehicle;
+	*/
+
+	/*
+	  Calls the Constructor Vehicle(int).
+	*/
+	CST8219::Vehicle myVehicle(4);
 
 	// Outputs a message to the screen.
 	cout << "I made a Vehicle!" << endl;
