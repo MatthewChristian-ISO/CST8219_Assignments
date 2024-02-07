@@ -1,6 +1,9 @@
+# CMakeList.txt : CMake project for Week2, include source and define
+# project specific logic here.
+cmake_minimum_required(VERSION 3.5)
 
-cmake_minimum_required(VERSION 2.8.9)
+# Project name.
+project (Week2)
 
-project (week2)
-
-add_executable(week2 week2.cpp)
+# Add source to this project's executable.
+add_executable(Week2 Week2.cpp)
