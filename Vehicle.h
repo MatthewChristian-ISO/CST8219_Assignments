@@ -18,16 +18,20 @@
 
 class Vehicle {
  private:
-	int numWheels;
-	int numDoors;
-	Vehicle* pVehicle;
+	int numWheels = 0;
+	int numDoors = 0;
+	//Vehicle* pVehicle;
 
  public:
 	Vehicle(int, int);
-	Vehicle(int);
 	Vehicle();
+	Vehicle(Vehicle&);
+	Vehicle(Vehicle*);
 	~Vehicle();
-	void userVehicle(void);
+	void setWheels(int);
+	int getWheels(void);
+	void setDoors(int);
+	int getDoors(void);
 	void printVehicle(void);
 };
 #endif

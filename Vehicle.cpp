@@ -14,5 +14,44 @@
 #include "Vehicle.h"
 #endif
 
-Vehicle::Vehicle() : Vehicle(0,0) {}
-void Vehicle::printVehicle() {}
+using namespace std;
+
+Vehicle::Vehicle(int w, int d) {
+	numWheels = w;
+	numDoors = d;
+}
+
+Vehicle::Vehicle() : Vehicle(0, 0) {}
+
+Vehicle::Vehicle(Vehicle &copy) {
+	setWheels(copy.getWheels());
+	setDoors(copy.getDoors());
+}
+
+Vehicle::Vehicle(Vehicle* copy) : Vehicle() {
+	setWheels(copy->getWheels());
+	setDoors(copy->getDoors());
+}
+
+Vehicle::~Vehicle(){};
+
+void Vehicle::setWheels(int wheels) {
+	numWheels = wheels;
+}
+
+int Vehicle::getWheels(void) {
+	return numWheels;
+}
+
+void Vehicle::setDoors(int doors) {
+	numDoors = doors;
+}
+
+int Vehicle::getDoors(void) {
+	return numDoors;
+}
+
+void Vehicle::printVehicle() {
+	cout << "Number of Wheels: " << getWheels() << endl;
+	cout << "Number of Doors: " << getDoors() << endl;
+}

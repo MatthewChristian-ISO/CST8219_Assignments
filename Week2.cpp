@@ -10,104 +10,36 @@
   function used to begin execution of the program.
 ************************************************************
 */
+#ifndef VEHICLE_H_
+#include "Vehicle.h"
+#endif
 
-#include<iostream>
-#include<string>
 using namespace std;
 
-namespace CST8219 {
-	// Class to represent a vehicle.
-	class Vehicle {
-	 private:
-		int numWheels;
-		int numDoors;
-		Vehicle* pVehicle = NULL;
+void CreateVehicle(Vehicle &aVehicle, int wheels = 4, int doors = 2) {
+	aVehicle.setWheels(wheels);
+	aVehicle.setDoors(doors);
 
-	 public: 
-		Vehicle(int w, int d) {
-			numWheels = w;
-			numDoors = d;
-
-			cout << "In constructor with 2 parameters" << endl;
-		}
-
-		Vehicle(int w) : Vehicle(w, 4) {
-			cout << "In constructor with 1 parameters, wheels = "
-				<< w << endl;
-		}
-
-		Vehicle() : Vehicle(4) {
-			cout << "In constructor with 0 parameters" << endl;
-		}
-
-		~Vehicle() {
-			cout << "In destructor" << endl;
-		}
-
-		void userVehicle() {
-			int userD = 0;
-			int userW = 0;
-			char userChar = NULL;
-
-			while (userChar != 'q') {
-				userChar = NULL;
-				userD = 0;
-				userW = 0;
-				cout << "Press ANY KEY to create a vehicle or q to quit: ";
-				cin >> userChar;
-				if (userChar != 'q') {
-					delete pVehicle;
-					// Asks user for input.
-					cout << "Enter number of doors: ";
-					while ((!(cin >> userD)) || (userD <= 0)) {
-						cout << "Error! Please enter a number: ";
-						cin.clear();
-						cin.ignore(256, '\n');
-					}
-
-					// Asks user for input.
-					cin.clear();
-					cin.ignore(256, '\n');
-					cout << "Enter number of wheels: ";
-					while ((!(cin >> userW)) || (userW <= 0)) {
-						cout << "Error! Please enter a number:";
-						cin.clear();
-						cin.ignore(256, '\n');
-					}
-
-					pVehicle = new Vehicle(userW, userD);
-				} else {
-					continue;
-				}
-			}
-		}
-	};
 }
-
-using namespace CST8219;
+	
 int main(int argc, char** argv) {
 	// Calls the Constructor Vehicle().
-	Vehicle vehicle1;
+	Vehicle original;
 
-	// Outputs a message to the screen.
-	cout << "Vehicle takes " << sizeof(vehicle1) << endl;
+	// Creates a copy using a reference.
+	Vehicle copy(original);
 
-	// Calls the Constructor Vehicle(int).
-	Vehicle vehicle2(4);
+	// Creates a copy using a pointer.
+	Vehicle secondCopy(&original);
+	copy.printVehicle();
 
-	// Outputs a message to the screen.
-	cout << "Vehicle takes " << sizeof(vehicle2) << endl;
+	CreateVehicle(copy, 2);
+	copy.printVehicle();
 
-	// Calls the Constructor Vehicle(int, int).
-	Vehicle vehicle3(4, 2);
-
-	// Outputs a message to the screen.
-	cout << "Vehicle takes " << sizeof(vehicle3) << endl;
-
-	// Outputs a message to the screen.
-	cout << "I made Vehicles!" << endl;
-
-	vehicle1.userVehicle();
+	CreateVehicle(copy, 2, 3);
+	copy.printVehicle();
+	copy = secondCopy;
+	copy.printVehicle();
 
 	return 0;
 }
