@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.2)
 project ("Week2")
 
 # Uses the specified source files to add an executable file to the project.
-add_executable(Week2 "Week2.cpp")
+add_executable(Week2 "Week2.cpp" "Vehicle.h" "Vehicle.cpp")
 
 # Sets the C++ Language Version.
 set_property (TARGET Week2 PROPERTY CXX_STANDARD 11)

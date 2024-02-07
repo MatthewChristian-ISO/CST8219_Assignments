@@ -1,11 +1,16 @@
-/**
- * Assignment: Lab 3
- * Course: CST819: C++ Programming
- * Lab Section: 303
- * Lab Professor: Mohammad Patoary
- * Due Date: 01/30/2024
- * Submission Date: 01/30/2024
+/*
+************************************************************
+* File Name: Week2.cpp
+* Course: CST8219 – C++ Programming.
+* Lab Section: [303].
+* Professor: Mohammad Patoary.
+* Assignment: Lab 4.
+* Date: February 5, 2024.
+* Purpose: This is the source file which defines the main()
+  function used to begin execution of the program.
+************************************************************
 */
+
 #include<iostream>
 #include<string>
 using namespace std;
