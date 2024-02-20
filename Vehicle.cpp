@@ -4,8 +4,8 @@
 * Course: CST8219 – C++ Programming.
 * Lab Section: [303].
 * Lab Professor: Mohammad Patoary.
-* Assignment: Lab 5.
-* Date: February 13, 2024.
+* Assignment: Lab 6.
+* Date: February 20, 2024.
 * Purpose: This is the source file which defines and implements
   a class representing a vehicle.
 ************************************************************
@@ -14,13 +14,26 @@
 #include "Vehicle.h"
 #endif
 
-Vehicle::Vehicle(int w, int d) {
-	numWheels = w;
-	numDoors = d;
+Vehicle::Vehicle(float engEfficiency) {
+	engineEfficiency = engEfficiency;
 }
 
-Vehicle::Vehicle() : Vehicle(4, 2) { }
+Vehicle::Vehicle() : Vehicle(0.0f) { }
 
+Vehicle::~Vehicle() {
+	cout << "In Vehicle Destructor" << endl;
+}
+
+void Vehicle::setEngineEfficiency(float engEfficiency) {
+	engineEfficiency = engEfficiency;
+}
+
+float Vehicle::getEngineEfficiency() {
+	return engineEfficiency;
+}
+
+
+/*
 Vehicle::Vehicle(Vehicle& copy) {
 	setWheels(copy.getWheels());
 	setDoors(copy.getDoors());
@@ -31,28 +44,6 @@ Vehicle::Vehicle(Vehicle* copy) : Vehicle() {
 	setDoors(copy->getDoors());
 }
 
-Vehicle::~Vehicle() { }
-
-void Vehicle::setWheels(int wheels) {
-	numWheels = wheels;
-}
-
-int Vehicle::getWheels(void) {
-	return numWheels;
-}
-
-void Vehicle::setDoors(int doors) {
-	numDoors = doors;
-}
-
-int Vehicle::getDoors(void) {
-	return numDoors;
-}
-
-void Vehicle::printVehicle() {
-	cout << "w=" << getWheels() << endl;
-	cout << "d=" << getDoors() << endl;
-}
 
 Vehicle Vehicle::operator=(const Vehicle& origin) {
 	numWheels = origin.numWheels;
@@ -107,9 +98,15 @@ Vehicle Vehicle::operator--(int someNum) {
 	return vehicleSubCopy;
 }
 
+void Vehicle::printVehicle() {
+	cout << "w=" << getWheels() << endl;
+	cout << "d=" << getDoors() << endl;
+}
+
 ostream& operator<<(ostream& outOb, const Vehicle& someVehicle) {
 	outOb << "w=" << someVehicle.numWheels;
 	outOb << " d=" << someVehicle.numDoors << endl;
 
 	return outOb;
 }
+*/

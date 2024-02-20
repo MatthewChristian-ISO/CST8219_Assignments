@@ -4,8 +4,8 @@
 * Course: CST8219 – C++ Programming.
 * Lab Section: [303].
 * Professor: Mohammad Patoary.
-* Assignment: Lab 5.
-* Date: February 13, 2024.
+* Assignment: Lab 6.
+* Date: February 20, 2024.
 * Purpose: This is the source file which defines the main()
   function used to begin execution of the program.
 ************************************************************
@@ -14,40 +14,33 @@
 #include "Vehicle.h"
 #endif
 
-/*
-void CreateVehicle(Vehicle &aVehicle, int wheels = 4, int doors = 2) {
-	aVehicle.setWheels(wheels);
-	aVehicle.setDoors(doors);
+#ifndef GASOLINEVEHICLE_H_
+#include "GasolineVehicle.h"
+#endif
+
+#ifndef ELECTRICVEHICLE_H_
+#include "ElectricVehicle.h"
+#endif
+
+#ifndef HYBRIDVEHICLE_H_
+#include "HybridVehicle.h"
+#endif
+
+Vehicle* testVehicle(Vehicle* pVehicle, const char* vehicleName) {
+	cout << vehicleName << "'s range is: " << pVehicle->calculateRange() << endl;
+	pVehicle->drive(150);
+	cout << vehicleName << "'s energy left is: " << pVehicle->percentEnergyRemaining() << endl;
+	cout << vehicleName << "'s range is now: " << pVehicle->calculateRange() << endl;
+
+	return pVehicle;
 }
-*/
 	
 int main(int argc, char** argv) {
-	/* Creates an Object of type Vehicle. */
-	Vehicle original;
-	/* Copy constructor by reference. */
-	Vehicle copy(original); 
+	delete testVehicle(new GasolineVehicle(50, 7.1f), "Corolla");
 
-	cout << "Original is: " << original << "Copy is: " << copy << endl;
+	delete testVehicle(dynamic_cast<GasolineVehicle*> (new HybridVehicle(42, 4.3f, 8.8f, 22.0f)), "Prius");
 
-	cout << "Increment original: " << original++ << endl;
-
-	cout << "Increment copy: " << ++copy<< endl;
-
-	cout << "Decrement original: " << --original << endl;
-
-	cout << "Decrement copy: " << copy-- << endl;
-
-	// should be true :
-	cout << "Compare equality 1: " << (original == copy) << endl;
-
-	//should be false:
-	cout << "Compare equality 2: " << (--original == ++copy) << endl;
-
-	//should be true:
-	cout << "Compare inequality: " << (original != copy) << endl;
-
-	//This should make original = copy, and then return a Vehicle for output:
-	cout << "Assignment operator: " << (original = copy) << endl;
+	delete testVehicle(new ElectricVehicle(75, 16), "Tesla 3");
 
 	return 0;
 }
