@@ -25,9 +25,9 @@ public:
 	ElectricVehicle(float, float);
 	ElectricVehicle();
 	virtual ~ElectricVehicle();
-	float calculateRange();
-	float percentEnergyRemaining();
-	void drive(float km);
+	virtual float calculateRange() override;
+	virtual float percentEnergyRemaining() override;
+	virtual void drive(float km) override;
 	void setCurrentCharge(float);
 	float getCurrentCharge();
 	void setMaximumCharge(float);

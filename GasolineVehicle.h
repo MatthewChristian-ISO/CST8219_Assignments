@@ -25,9 +25,9 @@ public:
 	GasolineVehicle(float, float);
 	GasolineVehicle();
 	virtual ~GasolineVehicle();
-	float calculateRange();
-	float percentEnergyRemaining();
-	void drive(float km);
+	virtual float calculateRange() override;
+	virtual float percentEnergyRemaining() override;
+	virtual void drive(float km) override;
 	void setCurrentGasoline(float);
 	float getCurrentGasoline();
 	void setMaximumGasoline(float);

@@ -26,8 +26,8 @@ public:
 	HybridVehicle(float, float, float, float);
 	HybridVehicle();
 	virtual ~HybridVehicle();
-	float calculateRange();
-	float percentEnergyRemaining();
-	void drive(float km);
+	virtual float calculateRange();
+	virtual float percentEnergyRemaining();
+	virtual void drive(float km);
 };
 #endif

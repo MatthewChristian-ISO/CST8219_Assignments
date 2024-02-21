@@ -49,12 +49,16 @@ float HybridVehicle::calculateRange() {
 
 float HybridVehicle::percentEnergyRemaining() {
 	float energyRemaining;
-	float gasEnergyRemaining;
-	float elecEnergyRemaining;
+	float gasEnergyRemaining = GasolineVehicle::percentEnergyRemaining();
+	cout << gasEnergyRemaining << endl;
+	float elecEnergyRemaining = ElectricVehicle::percentEnergyRemaining();
+	cout << elecEnergyRemaining << endl;
 	//gasEnergyRemaining = (getCurrentGasoline() / getMaximumGasoline()) * 100.0f;
 	//elecEnergyRemaining = (getCurrentCharge() / getMaximumCharge()) * 100.0f;
-	gasEnergyRemaining = GasolineVehicle::percentEnergyRemaining();
-	elecEnergyRemaining = ElectricVehicle::percentEnergyRemaining();
+	//gasEnergyRemaining = GasolineVehicle::percentEnergyRemaining();
+	//cout << gasEnergyRemaining;
+	//elecEnergyRemaining = ElectricVehicle::percentEnergyRemaining();
+	//cout << elecEnergyRemaining;
 	energyRemaining = (gasEnergyRemaining + elecEnergyRemaining) / 2;
 	return energyRemaining;
 }
