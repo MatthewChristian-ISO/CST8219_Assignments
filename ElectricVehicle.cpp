@@ -1,13 +1,13 @@
 /*
 ************************************************************
-* File Name: Vehicle.h
+* File Name: ElectricVehicle.cpp
 * Course: CST8219 – C++ Programming.
 * Lab Section: [303].
 * Lab Professor: Mohammad Patoary.
 * Assignment: Lab 6.
 * Date: February 20, 2024.
 * Purpose: This is the source file which defines and implements
-  a class representing a vehicle.
+  a class representing an electric vehicle.
 ************************************************************
 */
 #ifndef ELECTRICVEHICLE_H_
@@ -39,7 +39,7 @@ float ElectricVehicle::percentEnergyRemaining() {
 }
 
 void ElectricVehicle::drive(float km) {
-	if (currentCharge < 0) {
+	if ((currentCharge - ((km / 100) * getEngineEfficiency())) < 0) {
 		cout << "Your car is out of energy!" << endl;
 	} else {
 		currentCharge -= ((km / 100) * getEngineEfficiency());

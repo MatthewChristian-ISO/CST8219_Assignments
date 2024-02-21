@@ -1,13 +1,13 @@
 /*
 ************************************************************
-* File Name: Vehicle.h
+* File Name: ElectricVehicle.h
 * Course: CST8219 – C++ Programming.
 * Lab Section: [303].
 * Lab Professor: Mohammad Patoary.
 * Assignment: Lab 6.
 * Date: February 20, 2024.
 * Purpose: This is the header file used to declare classes
-  and function signatures for the Vehicle.cpp source file.
+  and function signatures for the ElectricVehicle.cpp source file.
 ************************************************************
 */
 #ifndef ELECTRICVEHICLE_H_
@@ -17,6 +17,7 @@
 #include "Vehicle.h"
 #endif
 
+/* Derived Non-Abstract Class to represent an electric vehicle. */
 class ElectricVehicle : public Vehicle {
 private:
 	float currentCharge;

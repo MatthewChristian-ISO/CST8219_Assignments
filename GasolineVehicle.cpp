@@ -1,13 +1,13 @@
 /*
 ************************************************************
-* File Name: Vehicle.h
+* File Name: GasolineVehicle.cpp
 * Course: CST8219 – C++ Programming.
 * Lab Section: [303].
 * Lab Professor: Mohammad Patoary.
 * Assignment: Lab 6.
 * Date: February 20, 2024.
 * Purpose: This is the source file which defines and implements
-  a class representing a vehicle.
+  a class representing a gasoline vehicle.
 ************************************************************
 */
 #ifndef GASOLINEVEHICLE_H_
@@ -39,7 +39,7 @@ float GasolineVehicle::percentEnergyRemaining() {
 }
 
 void GasolineVehicle::drive(float km) {
-	if (currentGasoline < 0) {
+	if ((currentGasoline - ((km / 100) * getEngineEfficiency())) < 0) {
 		cout << "Your car is out of energy!" << endl;
 	} else {
 		currentGasoline -= ((km / 100) * getEngineEfficiency());
@@ -57,6 +57,7 @@ float GasolineVehicle::getCurrentGasoline() {
 void GasolineVehicle::setMaximumGasoline(float maximumGas) {
 	maximumGasoline = maximumGas;
 }
+
 float GasolineVehicle::getMaximumGasoline() {
 	return maximumGasoline;
 }

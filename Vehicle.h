@@ -19,6 +19,7 @@
 
 using namespace std;
 
+/* Abstract Class to represent a vehicle. */
 class Vehicle {
 	//friend ostream& operator<<(ostream&, const Vehicle&);
  private:
@@ -32,7 +33,7 @@ class Vehicle {
 	virtual ~Vehicle();
 	void setEngineEfficiency(float);
 	float getEngineEfficiency();
-	void printVehicle();
+	//void printVehicle();
 	virtual float calculateRange() = 0;
 	virtual float percentEnergyRemaining() = 0;
 	virtual void drive(float km) = 0;

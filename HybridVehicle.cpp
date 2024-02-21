@@ -1,13 +1,13 @@
 /*
 ************************************************************
-* File Name: Vehicle.h
+* File Name: HybridVehicle.cpp
 * Course: CST8219 – C++ Programming.
 * Lab Section: [303].
 * Lab Professor: Mohammad Patoary.
 * Assignment: Lab 6.
 * Date: February 20, 2024.
 * Purpose: This is the source file which defines and implements
-  a class representing a vehicle.
+  a class representing a hybrid vehicle.
 ************************************************************
 */
 #ifndef HYBRIDVEHICLE_H_
@@ -33,12 +33,6 @@ float HybridVehicle::calculateRange() {
 	float currentRange;
 	float currentGasRange;
 	float currentElecRange;
-	/*
-	cout << "Gas Curr:" << getCurrentGasoline() << endl;
-	cout << "Elec Curr:" << getCurrentCharge() << endl;
-	cout << "Gas Eff:" << GasolineVehicle::getEngineEfficiency() << endl;
-	cout << "Elec Eff:" << ElectricVehicle::getEngineEfficiency() << endl;
-	*/
 	//currentGasRange = (getCurrentGasoline() * 100) / GasolineVehicle::getEngineEfficiency();
 	//currentElecRange = (getCurrentCharge() * 100) / ElectricVehicle::getEngineEfficiency();
 	currentGasRange = GasolineVehicle::calculateRange();
@@ -49,29 +43,30 @@ float HybridVehicle::calculateRange() {
 
 float HybridVehicle::percentEnergyRemaining() {
 	float energyRemaining;
-	float gasEnergyRemaining = GasolineVehicle::percentEnergyRemaining();
-	cout << gasEnergyRemaining << endl;
-	float elecEnergyRemaining = ElectricVehicle::percentEnergyRemaining();
-	cout << elecEnergyRemaining << endl;
+	float gasEnergyRemaining;
+	float elecEnergyRemaining;
+	gasEnergyRemaining = GasolineVehicle::percentEnergyRemaining();
+	elecEnergyRemaining = ElectricVehicle::percentEnergyRemaining();
 	//gasEnergyRemaining = (getCurrentGasoline() / getMaximumGasoline()) * 100.0f;
 	//elecEnergyRemaining = (getCurrentCharge() / getMaximumCharge()) * 100.0f;
-	//gasEnergyRemaining = GasolineVehicle::percentEnergyRemaining();
-	//cout << gasEnergyRemaining;
-	//elecEnergyRemaining = ElectricVehicle::percentEnergyRemaining();
-	//cout << elecEnergyRemaining;
+	//cout << gasEnergyRemaining << endl;
+	//cout << elecEnergyRemaining << endl;
 	energyRemaining = (gasEnergyRemaining + elecEnergyRemaining) / 2;
 	return energyRemaining;
 }
 
 void HybridVehicle::drive(float km) {
-	float newCurrentCharge = getCurrentCharge();
-	float newCurrentGas = getCurrentGasoline();
-	if ((getCurrentCharge() < 0) && (getCurrentGasoline() < 0)) {
+	float newCurrentCharge;
+	float newCurrentGas;
+	newCurrentCharge = ElectricVehicle::getCurrentCharge();
+	newCurrentGas = GasolineVehicle::getCurrentGasoline();
+	if (((newCurrentCharge - ((km / 100) * ElectricVehicle::getEngineEfficiency())) < 0) 
+		&& ((newCurrentGas - ((km / 100) * GasolineVehicle::getCurrentGasoline())) < 0)) {
 		cout << "Your car is out of energy!" << endl;
 	} else {
 		newCurrentCharge -= ((km / 100) * ElectricVehicle::getEngineEfficiency());
-		setCurrentCharge(newCurrentCharge);
+		ElectricVehicle::setCurrentCharge(newCurrentCharge);
 		newCurrentGas -= ((km / 100) * GasolineVehicle::getEngineEfficiency());
-		setCurrentGasoline(newCurrentGas);
+		GasolineVehicle::setCurrentGasoline(newCurrentGas);
 	}
 }
